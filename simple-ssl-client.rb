@@ -11,7 +11,7 @@ abort("usage: ruby #{__FILE__} [address] [port]") unless ARGV.length.to_i > 1
 
 # TCP/SSL initialization.
 tcp_client      = TCPSocket.new(ARGV[0], ARGV[1].to_i)
-ssl_server_cert = OpenSSL::X509::Certificate.new(File.open('certs/example-cert.pem'))
+ssl_server_cert = OpenSSL::X509::Certificate.new(File.read('certs/example-cert.pem'))
 ssl_client      = OpenSSL::SSL::SSLSocket.new(tcp_client)
 
 ssl_client.sync_close = true
@@ -23,7 +23,7 @@ if ssl_client.peer_cert.to_s != ssl_server_cert.to_s
     exit
 end
 
-puts "Connected to #{ARGV[0]}:#{ARGV[1]}"
+puts "Connected to #{ARGV[0]}:#{ARGV[1].to_i}"
 
 # Handle the reception from socket.
 Thread.new {
