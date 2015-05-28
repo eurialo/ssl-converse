@@ -5,13 +5,13 @@
 # Federico Fazzi <eurialo@deftcode.ninja>
 #
 
-['socket', 'openssl', 'thread', 'pp'].each(&method(:require))
+['socket', 'openssl', 'thread'].each(&method(:require))
 
 abort("usage: ruby #{__FILE__} [address] [port]") unless ARGV.length.to_i > 1
 
 # TCP/SSL initialization.
 tcp_client      = TCPSocket.new(ARGV[0], Integer(ARGV[1]))
-ssl_server_cert = OpenSSL::X509::Certificate.new(File.read('certs/example-cert.pem'))
+ssl_server_cert = OpenSSL::X509::Certificate.new(File.open('certs/deftcode.pem'))
 ssl_client      = OpenSSL::SSL::SSLSocket.new(tcp_client)
 
 ssl_client.sync_close = true

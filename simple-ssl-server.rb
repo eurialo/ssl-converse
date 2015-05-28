@@ -5,7 +5,7 @@
 # Federico Fazzi <eurialo@deftcode.ninja>
 #
 
-['socket', 'openssl', 'thread', 'pp'].each(&method(:require))
+['socket', 'openssl', 'thread'].each(&method(:require))
 
 abort("usage: ruby #{__FILE__} [port]") unless ARGV.length.to_i > 0
 
