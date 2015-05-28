@@ -34,9 +34,9 @@ The arguments mean:
                     the key that is required to sign the certificate in a previous step, so we need to create it along with the 
                     certificate. The rsa:2048 portion tells it to make an RSA key that is 2048 bits long.
 
--keyout:            This line tells OpenSSL where to place the generated private key file that we are creating.
+* -keyout:          This line tells OpenSSL where to place the generated private key file that we are creating.
 
--out:               This tells OpenSSL where to place the certificate that we are creating.
+* -out:             This tells OpenSSL where to place the certificate that we are creating.
 
 
 Reference
